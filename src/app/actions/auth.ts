@@ -18,6 +18,7 @@ export async function authenticate(
 ) {
   try {
     await signIn("credentials", formData);
+    
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -36,6 +37,7 @@ export async function register(
   formData: FormData,
 ) {
   try {
+    console.log("formData", formData);
     const { email, password } = await signUpSchema.parseAsync({
       email: formData.get("email"),
       password: formData.get("password"),
